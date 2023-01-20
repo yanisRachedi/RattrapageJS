@@ -1,17 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from "react-router-dom";
+import { render } from "react-dom";
+import App from "./App";
+import page1 from "./page1";
+import page2 from "./page2";
+import page3 from "./page3";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+function App() {
+  return (
+    <BrowserRouter>
+      <nav>
+        <Link to="/">page1</Link>
+        <Link to="/about">page2</Link>
+        <Link to="/contact">page3</Link>
+      </nav>
+        <Switch>
+            <Route exact path="/" component={page1} />
+            <Route path="/about" component={page2} />
+            <Route path="/contact" component={page3} />
+        </Switch>
+    </BrowserRouter>
+    );
+}
